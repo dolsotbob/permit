@@ -7,7 +7,7 @@ import {
   getBalance,
   getAllowance,
   permit,
-  tranferFrom,
+  transferFrom,
 } from '../utils/ethers';
 import { ethers } from 'hardhat';
 
@@ -43,7 +43,7 @@ describe('ethers 구현 테스트', function () {
 
     const value = ethers.parseEther('1');
 
-    await tranferFrom(owner.address, recipient.address, value);
+    await transferFrom(owner.address, recipient.address, value);
 
     const afterRecipientTokenBalance = await getBalance(recipient.address);
     const afterOwnerbalance = await ownerBalance();

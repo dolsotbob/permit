@@ -35,6 +35,7 @@ export const getBalance = async (address: string) => {
     return await contractByOwner.balanceOf(address);
   } catch (error) {
     console.error('Error in getBalance:', error);
+    throw error;
   }
 };
 
@@ -106,12 +107,12 @@ export const permit = async () => {
   }
 };
 
-export const tranferFrom = async (from: string, to: string, value: bigint) => {
+export const transferFrom = async (from: string, to: string, value: bigint) => {
   try {
     // Todo: from이 to에게 value만큼 가스 대납자의 시점(contractBySpender)에서 transferFrom을 실행합니다.
     const tx = await contractBySpender.transferFrom(from, to, value);
     return await tx.wait();
   } catch (error) {
-    console.error('Error in tranferFrom:', error);
+    console.error('Error in transferFrom:', error);
   }
 };
